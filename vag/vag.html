@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voice Design Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Voice Design Agent</h1>
+    <div class="header-actions">
+      <button id="undoBtn" class="ghost" title="Undo">Undo</button>
+      <button id="clearBtn" class="ghost" title="Clear canvas">Clear</button>
+      <button id="muteBtn" class="ghost" title="Toggle spoken replies">Voice replies: on</button>
+      <button id="exportBtn" class="primary-sm" title="Download as SVG">Export SVG</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage">
+      <svg id="canvas" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" aria-label="Design canvas"></svg>
+    </section>
+
+    <aside class="panel">
+      <div class="mic-wrap">
+        <button id="micBtn" class="mic" aria-pressed="false" aria-label="Start listening">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg>
+        </button>
+        <p id="status">Tap the mic and speak</p>
+        <p id="heard" class="heard"></p>
+      </div>
+
+      <form id="textForm" class="text-form" autocomplete="off">
+        <input id="textInput" type="text" placeholder="…or type a command" />
+        <button type="submit">Send</button>
+      </form>
+
+      <div class="log" id="log" aria-live="polite"></div>
+
+      <details class="help">
+        <summary>What can I say?</summary>
+        <ul>
+          <li>“Draw a big red circle”</li>
+          <li>“Add a small blue star on the left”</li>
+          <li>“Add text hello world”</li>
+          <li>“Make it green” / “Make it bigger”</li>
+          <li>“Move it right” / “Rotate it”</li>
+          <li>“Change the background to navy”</li>
+          <li>“Duplicate it” / “Delete it” / “Undo”</li>
+          <li>“Clear everything”</li>
+        </ul>
+        <p class="note">Click any shape to select it. Voice recognition works best in Chrome, Edge, and Safari.</p>
+      </details>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
